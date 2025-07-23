@@ -61,8 +61,10 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+           
         }
-
+        // 애니메이션 파라미터 갱신
+        animator.SetBool("isJump", !isGrounded);  // 공중에 떠 있으면 Jump 애니메이션 ON
     }
     private void FixedUpdate()
     {
