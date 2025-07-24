@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public float groundCheckDistance = 1.2f;
 
+    private int jumpCount = 0; // 현재 점프 횟수
+    public int maxJumpCount = 2; // 최대 점프 횟수 (2단 점프)
+
+
 
     private void Awake()
     {
@@ -51,6 +55,10 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.green);
         if (hit.collider != null)
         {
+            if (!isGrounded) // 착지한 순간
+            {
+                jumpCount = 0; // 점프 카운트 초기화
+            }
             isGrounded = true;
         }
         else
@@ -58,10 +66,13 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumpCount)
         {
+            rb.velocity = new Vector2(rb.velocity.x, 0f); // 점프 누적 방지 (2단 점프 시 수직 속도 초기화)
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-           
+            jumpCount++;
+            // Jump 애니메이션을 강제로 처음부터 재생
+            animator.Play("Player_Jump", 0, 0f);
         }
         // 애니메이션 파라미터 갱신
         animator.SetBool("isJump", !isGrounded);  // 공중에 떠 있으면 Jump 애니메이션 ON
