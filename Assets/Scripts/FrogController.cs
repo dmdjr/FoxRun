@@ -13,7 +13,7 @@ public class FrogController : MonoBehaviour
     int objActionNum = 0; // AI가 어떤 행동을 할 지 정해주는 숫자(1이면 xFlip, 2이면 해당 방향으로 점프)
 
     private bool isGrounded;
-    public LayerMask groundLayer;
+    public LayerMask groundAndPlayerLayers;
     public float groundCheckDistance = 1.2f;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
@@ -51,8 +51,17 @@ public class FrogController : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundAndPlayerLayers);
         Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.green);
         isGrounded = hit.collider != null;
+    }
+
+    public void Die()
+    {
+        animator.SetTrigger("isDead");
+    }
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 }

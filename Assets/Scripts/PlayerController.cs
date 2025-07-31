@@ -83,4 +83,19 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("enemy"))
+        {
+            // 위에서 밟았는지 확인 (간단하게 Y 속도로 판단하거나 충돌 지점으로 세분화 가능)
+            if (rb.velocity.y < 0)
+            {
+                // 점프 반동 처리
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+                // 적 죽이기
+                collision.collider.GetComponent<FrogController>()?.Die();
+            }
+        }
+    }
 }

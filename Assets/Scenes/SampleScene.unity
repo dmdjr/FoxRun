@@ -251,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 191159240}
   - component: {fileID: 191159239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: middle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472583160}
   - component: {fileID: 472583159}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 626159106}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 902021258}
   m_Layer: 0
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,9 +861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpPower: 7
-  groundLayer:
+  groundAndPlayerLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   groundCheckDistance: 1.2
 --- !u!1 &932397712
 GameObject:
@@ -911,9 +911,9 @@ GameObject:
   - component: {fileID: 1036595138}
   - component: {fileID: 1036595143}
   - component: {fileID: 1036595144}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2784,7 +2784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598375488}
   - component: {fileID: 1598375487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
