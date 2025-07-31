@@ -861,6 +861,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpPower: 7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundCheckDistance: 1.2
 --- !u!1 &932397712
 GameObject:
   m_ObjectHideFlags: 0
